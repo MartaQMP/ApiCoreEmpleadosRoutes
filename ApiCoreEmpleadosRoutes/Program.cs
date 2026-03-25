@@ -24,7 +24,11 @@ if (app.Environment.IsDevelopment())
 app.MapOpenApi();
 app.MapScalarApiReference();
 app.UseHttpsRedirection();
-
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/scalar");
+    return Task.CompletedTask;
+});
 app.UseAuthorization();
 
 app.MapControllers();
